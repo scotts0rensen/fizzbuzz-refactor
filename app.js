@@ -1,51 +1,44 @@
 var fizz = "fizz";
 var buzz = "buzz";
 
-$(document).ready(function() {
-
-  var fizzBuzz = function(number) {
-    var theNumber = +number;
-
-    if (!isPositiveInteger(theNumber))
-    {
-      alert("Please enter a positive integer!");
-      return;
-    }
-
-    for (var i = 1; i <= theNumber; i++)
-    {
-      $("body").append($("<p>" + getFizzBuzzText(i) + "</p>"));
-    }
-  };
-
+$(document).ready( function () {
   var number = prompt("Please enter a number:");
-  fizzBuzz(number);
+  addFizzBuzzToBody(number);
 });
+
+function addFizzBuzzToBody(maxNumberStr) {
+  var maxNumber = +maxNumberStr;
+
+  if (!isPositiveInteger(maxNumber))
+  {
+    alert("Please enter a positive integer!");
+    return;
+  }
+
+  for (var i = 1; i <= maxNumber; i++)
+  {
+    $("body").append($("<p>" + getFizzBuzzText(i) + "</p>"));
+  }
+};
 
 function isPositiveInteger(number)
 {
   return !isNaN(number) && (number % 1 == 0) && (number >= 0);
 }
 
-function getFizzBuzzText(theNumber) {
-  if (isDivisible(theNumber, 3) && isDivisible(theNumber, 5))
-  {
+function getFizzBuzzText(number) {
+  if (isDivisible(number, 3) && isDivisible(number, 5))
     return fizz + " " + buzz;
-  }
 
-  if (isDivisible(theNumber, 3))
-  {
+  if (isDivisible(number, 3))
     return fizz;
-  }
 
-  if (isDivisible(theNumber, 5))
-  {
+  if (isDivisible(number, 5))
     return buzz;
-  }
 
-  return theNumber;
+  return number;
 }
 
-function isDivisible(theNumber, divisor) {
-  return theNumber % divisor === 0;
+function isDivisible(number, divisor) {
+  return number % divisor === 0;
 }
