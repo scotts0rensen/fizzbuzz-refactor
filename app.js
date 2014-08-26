@@ -2,7 +2,6 @@ var fizz = "fizz";
 var buzz = "buzz";
 
 $(document).ready(function() {
-  var number = prompt("Please enter a number");
 
   var fizzBuzz = function(number) {
     var theNumber = +number;
@@ -15,20 +14,20 @@ $(document).ready(function() {
 
     for (var i = 1; i <= theNumber; i++)
     {
-      var text = $("<p>" + getText(i) + "</p>");
-      $("body").append(text);
+      $("body").append($("<p>" + getFizzBuzzText(i) + "</p>"));
     }
   };
 
+  var number = prompt("Please enter a number:");
   fizzBuzz(number);
 });
 
 function isPositiveInteger(number)
 {
-  return !isNaN(number) && number % 1 == 0 && number >= 0;
+  return !isNaN(number) && (number % 1 == 0) && (number >= 0);
 }
 
-function getText(theNumber) {
+function getFizzBuzzText(theNumber) {
   if (isDivisible(theNumber, 3) && isDivisible(theNumber, 5))
   {
     return fizz + " " + buzz;
